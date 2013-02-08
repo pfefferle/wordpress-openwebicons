@@ -18,22 +18,25 @@ add_action( 'wp_enqueue_scripts', 'openwpicons_css' );
 add_action( 'admin_enqueue_scripts', 'openwpicons_css' );
 
 /**
- * adds an item to the admin-menu
+ * Add menu-item
  */
 function openwpicons_admin_menu_item() {
   add_options_page('OpenWeb Icons', 'OpenWeb Icons', 10, 'openwebicons', 'openwpicons_admin_show_settings');
 }
 add_action('admin_menu', 'openwpicons_admin_menu_item');
 
+/**
+ * Settings page
+ */
 function openwpicons_admin_show_settings() {
   $css = openwpicons_parse_css();
 ?>
 <div class="wrap">
-  <img src="<?php echo WP_PLUGIN_URL ?>/yiidit/logo_32x32.png" alt="Spreadly" class="icon32" />
+  <i class="icon32 openwebicons-open-web" style="font-size: 32px;"></i>
   
   <h2><?php _e('OpenWeb Icons', 'openwpicons') ?></h2>
 
-  <p>Check out the social media reach of your blog at <a href="http://spreadly.com" target="_blank">spreadly.com</a></p>
+  <p>Visit <a href="http://pfefferle.github.com/openwebicons/">http://pfefferle.github.com/openwebicons/</a> for more informations</p>
   
   <table class="widefat" cellspacing="0">
     <thead>
@@ -44,10 +47,10 @@ function openwpicons_admin_show_settings() {
         <th>sample-html</th>
       </tr>
     </thead>
-  	<tbody>
+    <tbody>
       <?php for ($i = 0; $i < count($css[0]); $i++) { ?>
       <tr class="alternate">
-        <td><i class="<?php echo $css[1][$i]; ?>"></i></td>
+        <td><i class="<?php echo $css[1][$i]; ?>" style="font-size: 25px;"></i></td>
   	    <td><?php echo $css[1][$i]; ?></td>
         <td><?php echo $css[2][$i]; ?></td>
         <td><code>&lt;i class="<?php echo $css[1][$i]; ?>"&gt;&lt/i&gt;</code></td>
@@ -59,6 +62,9 @@ function openwpicons_admin_show_settings() {
 <?php
 }
 
+/**
+ * Parse css-file to generate a preview
+ */
 function openwpicons_parse_css() {
   $css = @file_get_contents(dirname(__FILE__)."/css/openwebicons.css");
   
