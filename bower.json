@@ -1,0 +1,8 @@
+{
+	"name": "OpenWeb Icons",
+	"description": "OpenWeb Icons for WordPress",
+	"version": "1.0.0",
+	"dependencies": {
+		"openwebicons": "*"
+	}
+}
